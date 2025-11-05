@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
 	{
         marble.transform.position = teleporter.position;
         top3++;
-        if (top3 == 1)
+        if (top3 == 3)
         {
             isGameOver = true;
         }
