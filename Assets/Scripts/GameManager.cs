@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     // Flags that control the state of the game
     private float elapsedTime = 0;
     private bool isRunning = false;
-    private int top3 = 0;
+    int marbles = GameObject.FindGameObjectsWithTag("Marble").Length;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,11 +22,6 @@ public class GameManager : MonoBehaviour
         elapsedTime = 0;
         isRunning = true;
         isGameOver = false;
-        /*GameObject[] marbles = GameObject.FindGameObjectsWithTag("Marble");
-        foreach (GameObject marble in marbles)
-        {
-            PositionMarble(marble);
-        }*/
     }
     public void FinishedGame()
     {
@@ -85,8 +80,8 @@ public class GameManager : MonoBehaviour
     public void Goal(GameObject marble)
 	{
         marble.transform.position = teleporter.position;
-        top3++;
-        if (top3 == 3)
+        marbles--;
+        if (marbles == 1)
         {
             isGameOver = true;
         }

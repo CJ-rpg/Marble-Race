@@ -19,7 +19,7 @@ public class MarbleScript : MonoBehaviour
         startPosition = spawnPoint.position;
         rb = GetComponent<Rigidbody2D>();
 
-        Invoke(nameof(ApplyForce), delay);
+        //Invoke(nameof(ApplyForce), delay);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -32,12 +32,12 @@ public class MarbleScript : MonoBehaviour
 
     void TeleportToStart()
     {
-        rb.linearVelocity = Vector2.zero; // Stop movement
+        //rb.linearVelocity = Vector2.zero; // Stop movement
         transform.position = startPosition;
-        StartCoroutine(DelayedPush());
+        //StartCoroutine(DelayedPush());
     }
 
-    IEnumerator DelayedPush()
+    /*IEnumerator DelayedPush()
     {
         yield return new WaitForSeconds(pushDelay);
         rb.AddForce(pushForce, ForceMode2D.Impulse);
@@ -46,7 +46,7 @@ public class MarbleScript : MonoBehaviour
     void ApplyForce()
     {
         GetComponent<Rigidbody2D>().AddForce(startForce, ForceMode2D.Impulse);
-    }
+    }*/
 
     // Update is called once per frame
     void Update()
