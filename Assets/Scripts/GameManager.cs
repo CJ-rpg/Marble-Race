@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
     // Flags that control the state of the game
     private float elapsedTime = 0;
     private bool isRunning = false;
-    int marbles = GameObject.FindGameObjectsWithTag("Marble").Length;
+    private int marbles;
+    private GameObject winner;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,6 +24,7 @@ public class GameManager : MonoBehaviour
         elapsedTime = 0;
         isRunning = true;
         isGameOver = false;
+        marbles = GameObject.FindGameObjectsWithTag("Marble").Length;
     }
     public void FinishedGame()
     {
@@ -72,7 +75,7 @@ public class GameManager : MonoBehaviour
                 Reset();
                 
             }
-            GUI.Box(new Rect(Screen.width / 2 - 65, 185, 130, 40), "Your Time Was\n" + ((int)elapsedTime).ToString() + " seconds");
+            GUI.Box(new Rect(Screen.width / 2 - 65, 185, 130, 40), "Winner: " + winner.name.ToString() + "!");
 
         }
     }
@@ -81,7 +84,13 @@ public class GameManager : MonoBehaviour
 	{
         marble.transform.position = teleporter.position;
         marbles--;
-        if (marbles == 1)
+
+        if (winner == null)
+        {
+            winner = marble;
+        }
+
+        if (marbles == 0)
         {
             isGameOver = true;
         }

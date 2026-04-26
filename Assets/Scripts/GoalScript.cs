@@ -7,6 +7,8 @@ public class GoalScript : MonoBehaviour
     public GameManager gameManager;
     public TMPro.TextMeshProUGUI textbox;
 
+    private GameObject winner;
+
     // Triggers when the marble collides with trap
     void OnCollisionEnter2D(Collision2D collision)
     {
